@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/1610082ff9.js" crossorigin="anonymous"></script>
+
+    <title>Kelana Chandra Helyandika ( H1D020024 )</title>
+
+  </head>
+
+  <body  onload="focus_name()">
+
+    <div class="auten">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7 col-lg-5">
+
+            <div class="card">
+
+              <div class="text-center">
+                <h1>Collab Research</h1>
+              </div>
+              
+              <div class="card-body">
+                
+                <p class="login-box-msg text-center">Daftar Akun</p>
+                
+                <form onsubmit="return cek_pass();">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nama Lengkap" id="name"/>
+
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Email" id="email" />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password" id="password"/>
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Retype password" id="password_confirmation" />
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <span id = "message" style="color:red"></span>
+                  <div class="form-group my-4">
+                    <button type="submit" class="btn btn-primary form-control" >Daftar</button>
+                  </div>
+
+                </form>
+              
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <script>
+
+      function focus_name() {
+        document.getElementById("name").focus();
+      }
+
+      function cek_pass() {
+        var password = document.getElementById("password").value;
+        var retype_password = document.getElementById("password_confirmation").value;
+        var nama = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+
+        if (nama == "") {
+          document.getElementById("message").innerHTML = "Nama Masih Kosong!";
+          return false;
+        }
+
+        if (email == ""){
+          document.getElementById("message").innerHTML = "Email Masih Kosong!";
+          return false;
+        }
+
+        if (password == "") {
+          document.getElementById("message").innerHTML = "Password masih kosong";
+          return false;
+        }
+
+        if (password.length < 8) {
+          document.getElementById("message").innerHTML = "Password Kurang dari 8 karakter";
+          return false;
+        }
+
+        if (password != retype_password) {
+          document.getElementById("message").innerHTML = "Password Konfirmasi tidak sesuai";
+          return false;
+        }
+
+        
+      }
+
+
+      var inputname = document.getElementById("name");
+      var inputemail = document.getElementById("email");
+      var inputpassword = document.getElementById("password");
+      inputname.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault(true);
+          document.getElementById("email").focus();
+        }
+      });
+
+      inputemail.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          document.getElementById("password").focus();
+        }
+      });
+
+      inputpassword.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          document.getElementById("password_confirmation").focus();
+        }
+      });
+    
+
+    </script>
+
+
+  </body>
+</html>
